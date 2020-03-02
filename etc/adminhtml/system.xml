@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="orangecat" translate="label" sortOrder="1">
+            <label>Orangecat</label>
+        </tab>
+        <section id="geoip" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>GeoIP</label>
+            <tab>orangecat</tab>
+            <resource>Orangecat_Geoip::config</resource>
+            <group id="general" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>GeoIP Configuration</label>
+                <field id="enabled" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable GeoIP Support</label>
+                    <comment>The service will not be available until you download the IP's database</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="licensekey" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>License Key</label>
+                    <comment><![CDATA[You need a valid license key to download IP's Database. You can get it by registering at: https://www.maxmind.com/en/geolite2/signup]]></comment>
+                </field>
+            </group>
+            <group id="update_geoip" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>MaxMind GeoIP Database</label>
+                <attribute type="expanded">1</attribute>
+                <field id="maxmind" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Orangecat\Geoip\Block\Adminhtml\System\Config\MaxMindInfo</frontend_model>
+                </field>
+                <field id="listbutton" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Orangecat\Geoip\Block\Adminhtml\System\Config\Button</frontend_model>
+                </field>
+             </group>
+
+            <group id="test" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>GeoIP Testing</label>
+                <attribute type="expanded">1</attribute>
+                <field id="maxmind" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Orangecat\Geoip\Block\Adminhtml\System\Config\TestInfo</frontend_model>
+                </field>
+                <field id="fakeip" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Simulate IP</label>
+                    <comment><![CDATA[US: 162.254.206.227 - UK: 185.86.151.11 - AR: 190.189.94.33]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
